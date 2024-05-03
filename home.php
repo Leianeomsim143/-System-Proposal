@@ -135,8 +135,7 @@
   <div class="container-fluid">
 
     <a class="navbar-brand" href="#">
-    <img src="image/logo/HealthClubLogo.png" alt="" width="80" height="40" class="d-inline-block align-text-top">
-		Health club fitness</a>
+		Fitness Health Plan</a>
     
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -148,9 +147,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" href="our_services.php">Our Services</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="staff.php">Staff</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="article_display.php">Articles</a>
@@ -167,19 +163,19 @@
 <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="image/carousel/carousel1.jpg" class="d-block w-100" alt="...">
+      <img src="notebooks-top-each-other-with-plan-goals_185193-146970.webp" class="d-block w-100 h-40" alt="..." style="height: 70svh;">
     </div>
     <div class="carousel-item">
-      <img src="image/carousel/carousel2.jpg" class="d-block w-100" alt="...">
+      <img src="woman-and-personal-trainer-making-exercise-plan-in-gym.webp" class="d-block w-100" alt="..." style="height: 70svh;">
     </div>
     <div class="carousel-item">
-      <img src="image/carousel/carousel3.jpg" class="d-block w-100" alt="...">
+      <img src="exercise-schedule.webp" class="d-block w-100" alt="..." style="height: 70svh;">
     </div>
     <div class="carousel-item">
-      <img src="image/carousel/carousel4.jpg" class="d-block w-100" alt="...">
+      <img src="360_F_507645963_WjJHTwhWybHutBSG9MjEancGLChZbqvz.webp" class="d-block w-100" alt="..." style="height: 70svh;">
     </div>
     <div class="carousel-item">
-      <img src="image/carousel/carousel5.jpg" class="d-block w-100" alt="...">
+      <img src="photo-1494597564530-871f2b93ac55.jpg" class="d-block w-100" alt="..." style="height: 70svh;">
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -291,7 +287,7 @@
         <form action="" method = "post">
 
         	<div class="form-group">
-        	<img src="image/logo/HealthClubLogo2.jpg" width="310" height="70" class="rounded" alt="...">
+        	<img src="360_F_108589978_b9XaL1FaXBpNd44A68QWAIapiSlieYl5.webp" width="310" height="200" class="rounded" alt="...">
         	</div>
 
 
