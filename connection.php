@@ -1,15 +1,17 @@
+
 <?php
+
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "fitness_plan_db";
 
-$conn = new mysqli($servername, $username, $password, $database);
+$servername='localhost';
+$username='root';
+$password='';
+$dbname = "health_club_fitness";
 
+$conn=new mysqli($servername,$username,$password,"$dbname");
 if($conn->connect_error){
-  die("Connection failed: " . $conn->connect_error);
+   die('Could not Connect My Sql:' . $conn->connect_error);
 }
-?>
+
 ?>
