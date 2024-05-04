@@ -7,7 +7,7 @@ session_start();
 $servername='localhost';
 $username='root';
 $password='';
-$dbname = "health_club_fitness";
+$dbname = "fitness_plan_db";
 
 $conn=new mysqli($servername,$username,$password,"$dbname");
 if($conn->connect_error){

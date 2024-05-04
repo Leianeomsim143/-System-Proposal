@@ -1,24 +1,5 @@
 <?php require 'connection.php' ;?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,103 +7,67 @@
 	<meta name="author" content="Kodinger">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Home</title>
+  <link rel="stylesheet" href="bootstrap.css">
   <link rel = "shortcut icon" href = "image/logo/HealthClubLogo.png" type = "image/x-icon">
-
-	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-
-	<!-- JavaScript Bundle with Popper -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- start session and send users to their dashboards -->
 <?php
 
-    $message="";
-    $role="";
+if(isset($_SESSION["status"])){
+  echo '<script>alert ("You already logged in. Please proceed.") ; window.location.href = "dashboard.php"; </script>';
+  exit();
+}
 
-    if (isset($_POST['submit'])){
-        $username = $_POST['username'];
-        $password = $_POST['password'];
+if(isset($_POST['submit'])){
+  $users = $_POST['user'];
+  $passs = $_POST['pass'];
 
-        $query = "SELECT * FROM login WHERE username='$username' AND password='$password' AND deletion_indicator is NULL";
-        $result = mysqli_query($conn,$query);
-
-        if (mysqli_num_rows($result) > 0) 
-        {
-          while($row = mysqli_fetch_assoc($result))
-          {
-              if($row["role"] == "admin")
-              {
-                $_SESSION['AdminUser'] = $row["username"];
-                header('Location: admin_dashboard.php');
-              }
-              elseif ($row["role"] == "consultant")
-              {
-                $_SESSION['ConsultantUser'] = $row["username"];
-                header('Location: consultant_dashboard.php');
-              }
-              elseif($row["role"] == "client")
-              {
-                $_SESSION['ClientUser'] = $row["username"];
-                header('Location: client_dashboard.php');
-              }
-          }
-        }
-        else
-        {
-          $message="Invalid Username or Password";
-        }
+if(empty($users) || empty($passs)){
+  echo '<p class="text-danger" >Please enter username and password.</p>';
+}else{
+$sql = "SELECT * FROM `tbl_users` WHERE `username` = ? AND `password` = ?";
+$stmt = $conn->prepare($sql);
+$stmt -> bind_param("ss",$users,$passs);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
 
 }
+
+if ($passs != @$row['password'] && $users != @$row['username']) {
+  
+  echo '<p class="text-danger" >Incorrect Credentials, Please try again!</p>';
+}else{
+  
+
+  if($row['status'] == 0){
+    $query = "UPDATE `tbl_users` SET `status` = '1' WHERE `username` = '$users'";
+    $stmts=$conn->prepare($query);
+    $stmts->execute();
+    $_SESSION['username'] = @$row['username'];
+    $_SESSION["status"] = @$row["status"];
+    header ("Location: Dashboard.php");
+  }else{
+
+    $username = $_SESSION['username'];
+    $sql = "SELECT * FROM `tbl_users` WHERE `username` = '$username'";
+    $result = mysqli_query($conn, $sql);
+
+  if(mysqli_num_rows($result) == 1){
+    $row = mysqli_fetch_assoc($result);
+      if($row['status'] == 1){
+    echo '<script>alert ("This account is already logged in. Please create or log in another account.") ; window.location.href = "index.php"; </script>';
+      exit();
+}
+}
+  }
+header("Location:Dashboard.php");
+exit();
+}
+}
+
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 </head>
 
@@ -224,57 +169,11 @@
 
 
 <div class="d-grid gap-2 text-center">
-	<a class="btn btn-dark" href="check_user_available.php" role="button"><h2>Register here</h2></a>
+	<a class="btn btn-dark" href="register.php" role="button"><h2>Register here</h2></a>
 </div>
 
 
 <div class="mt-4 col-md-12"></div> <!-- Margin between divs -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 <!-- Start form -->
@@ -296,24 +195,21 @@
             <div class="form-group">
                 <label for="inputUserName" class="control-label">Enter Username</label>
                 <div class="col-md">
-                	<input type="text" class="form-control form-control-md" id="username" placeholder="Enter your Username" name="username" required>
+                	<input type="text" class="form-control form-control-md" id="user" placeholder="Enter your Username" name="user">
                 </div>
             </div>
-
+            <div class="mt-2 col-md-12"></div>
+            <div class="mt-2 col-md-12"></div>
             <div class="form-group">
                 <label for="inputPassword" class="control-label">Enter Password</label>
                 <div class="col-md">
-                	<input type="password" class="form-control form-control-md" id="password" placeholder="Enter your Password" name="password" required>
+                	<input type="password" class="form-control form-control-md" id="pass" placeholder="Enter your Password" name="pass">
                 </div>
             </div>
 
-            <p style="color:red;"> <?php echo $message; ?> </p>
 
-            <div class="form-group">
-                <div class="col-md">
-                	<a href="forget_password.php" class="link-secondary">Forget password</a>
-                </div>
-            </div>
+
+          
 
             <div class="mt-2 col-md-12"></div> <!-- Margin between divs -->
 
@@ -675,6 +571,6 @@
 <!-- End footer -->
 
 
-
+<script src="bootstrap.js"></script>
 </body>
 </html>
