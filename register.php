@@ -17,10 +17,9 @@
   if(isset($_POST['submit'])){
     $users = $_POST['user'];
     $passs = $_POST['pass'];
+    $lnames = $_POST['lname'];
     $fnames = $_POST['fname'];
     $mnames = $_POST['mname'];
-    $lnames = $_POST['lname'];
-    $pos = 'Employee';
 
     $query = "SELECT * FROM `tbl_users` WHERE `username` = '$users'";
     $stmts = $conn->prepare($query);
@@ -39,7 +38,7 @@
     $stmt = $conn->prepare($sql);
     $stmt -> bind_param("sssss",$users,$passs,$fnames,$mnames,$lnames);
     $stmt->execute();
-      echo 'Registered Successfully.';
+      echo '<script>alert ("Register Successfully! Please proceed to log in page.") ; window.location.href = "home.php"; </script>';
 
   }
 }
