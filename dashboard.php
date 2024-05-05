@@ -28,7 +28,7 @@ $username = $_SESSION['username'];
     <label for="cm">Height (Meter <sup>2</sup>): </label>
     <input type="float" name="height"><br><br>
     <button type="submit" name="submit">Submit</button>
-    <a href="foodlibrary.php">Food Library</a>
+    
     <?php
         if(isset($_POST['submit'])){
             $weight = $_POST['weight'];
@@ -53,18 +53,19 @@ $username = $_SESSION['username'];
           $format = number_format ($division, 2);
           echo "<br>"."<br>".'Your BMI is '. $format."<br>";
 
+
           if ($format < 18.5) {
-            echo "You're Underweight ";
+            echo "You're Underweight. Please proceed to food library for recommended food and exercise.";
         } elseif ($format >= 18.5 && $format <= 24.9) {
-            echo "You're Normal ";
+            echo "You're Normal. Please proceed to food library for recommended food and exercise. ";
         } elseif ($format >= 25 && $format <= 29.9) {
-            echo "You're Overweight ";
+            echo "You're Overweight. Please proceed to food library for recommended food and exercise.";
         } elseif ($format >= 30) {
-            echo "You're Obese ";
+            echo "You're Obese. Please proceed to food library for recommended food and exercise.";
         } else {
             echo "Invalid input"; // Add this in case $format is not a valid number
         }
-        
+        echo "<br>".'<a href="foodlibrary.php">Food Library</a>';
     }
     ?>
     </form>
