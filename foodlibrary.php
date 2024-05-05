@@ -24,10 +24,10 @@
 		while($row = $result -> fetch_assoc()){
 			echo "<tr>";
 			echo "<td>".$row["food_id"]."</td>";
+			echo "<td>".$row["food_name"]."</td>";
 			echo "<td>".$row["food_calories"]."</td>";
 			echo "<td>".$row["food_carbohydrates"]."</td>";
-			echo "<td>".$row["food_Picture"]."</td>";
-			echo "<td><img src='".$row["food_picture"]."' width='100' height='100'></td>";
+			echo "<td><img src='data:image/jpeg;base64,".base64_encode($row["food_picture"])."' width='100' height='100'></td>";
 			echo "<td><a href='update.php?student_ID=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <a href='delete.php?student_ID=".$row["food_id"]."'  class='btn btn-danger'>Delete</a></td>";
 			echo "</tr>";
 		}
