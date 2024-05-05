@@ -8,6 +8,26 @@ if(!isset($_SESSION['username'])){
 $username = $_SESSION['username'];
     ?>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+
+    echo '<h1>Welcome ' .$username. '</h1>';
+
+    ?>
+    <form action="" method="post">
+    <h1>Enter your BMI</h1>
+    <label for="kilo">Weight (Kilogram): </label>
+    <input type="number" name="weight"><br><br>
+    <label for="cm">Height (Meter <sup>2</sup>): </label>
+    <input type="float" name="height"><br><br>
+    <button type="submit" name="submit">Submit</button><br><br>
     <?php
         if(isset($_POST['submit'])){
             $weight = $_POST['weight'];
@@ -27,32 +47,11 @@ $username = $_SESSION['username'];
         $stmt = $conn->prepare($sql);
         $stmt -> bind_param("ss",$weight,$height);
         $stmt->execute();
-          echo 'BMI Addedd Successfuly!';
+
+          $division = $weight / $height;
+          $format = number_format ($division, 2);
+          echo 'Your BMI is ' .$format;
     }
-    ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <?php
-
-    echo '<h1>Welcome ' .$username. '</h1>';
-    ?>
-    <form action="" method="post">
-    <h1>Enter your BMI</h1>
-    <label for="kilo">Weight (Kilogram): </label>
-    <input type="number" name="weight"><br><br>
-    <label for="cm">Hieght (Meter <sup>2</sup>): </label>
-    <input type="number" name="height"><br><br>
-    <button type="submit" name="submit">Submit</button>
-
-    <?php
-
     ?>
     </form>
 </body>
