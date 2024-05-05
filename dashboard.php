@@ -50,7 +50,7 @@ $username = $_SESSION['username'];
 
           $division = $weight / $height;
           $format = number_format ($division, 2);
-          echo 'Your BMI is ' .$format;
+          echo '<script>alert ("Proceed to see your BMI and classification") ; window.location.href = "foodlibrary.php"; </script>';
     }
     ?>
     </form>
