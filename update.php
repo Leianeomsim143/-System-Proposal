@@ -3,19 +3,19 @@
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $food_id = $_POST['food_id'];
         $food_name = $_POST['food_name'];
+        $food_calories = $_POST['food_calories'];
         $food_carbohydrates = $_POST['food_carbohydrates'];
-        $food_picture = $_POST['food_picture'];
-
+    
         if($_FILES['photo']['size'] > 0){
-            $old_photo_path = $row['Food_pictures'];
+            $old_photo_path = $row['food_picture'];
             unlink($old_photo_path);
 
-            $photo_path = 'Food_pictures/' . $_FILES['photo']['name'];
+            $photo_path = 'Foodpictures/' . $_FILES['photo']['name'];
             move_uploaded_file($_FILES['photo']['tmp_name'], $photo_path);
 
-            $sql = "UPDATE food_library SET food_name ='$food_name', food_calories='$food_calories', food_carbohydrates='$food_carbohydrates', food_picture='$food_picture' WHERE food_id='$food_id'";
+            $sql = "UPDATE food_library SET food_name ='$food_name', food_calories='$food_calories', food_carbohydrates='$food_carbohydrates', food_picture='$photo_path' WHERE food_id='$food_id'";
         } else{
-            $sql = "UPDATE food_library SET food_name ='$food_name', food_calories='$food_calories', food_carbohydrates='$food_carbohydrates', food_picture='$food_picture' WHERE food_id='$food_id'";
+            $sql = "UPDATE food_library SET food_name ='$food_name', food_calories='$food_calories', food_carbohydrates='$food_carbohydrates' WHERE food_id='$food_id'";
         }
 
         $conn->query($sql);
