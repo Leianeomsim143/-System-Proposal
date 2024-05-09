@@ -30,6 +30,7 @@ $username = $_SESSION['username'];
     <button type="submit" name="submit">Submit</button>
     
     <?php
+
         if(isset($_POST['submit'])){
             $weight = $_POST['weight'];
             $height = $_POST['height'];

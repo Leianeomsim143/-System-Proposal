@@ -18,10 +18,6 @@
 		<th>Action</th>
 
         <?php
-
-		if ($format == 30){
-			echo 'hehe';
-		}
         $sql = "SELECT * FROM food_library";
         $result = $conn->query($sql);
 
