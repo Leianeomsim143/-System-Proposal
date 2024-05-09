@@ -7,6 +7,7 @@
     $lnames = $_POST['lname'];
     $fnames = $_POST['fname'];
     $mnames = $_POST['mname'];
+    $user_type = $_POST['user_type'];
 
     $query = "SELECT * FROM `tbl_users` WHERE `username` = '$users'";
     $stmts = $conn->prepare($query);
@@ -21,11 +22,18 @@
 
     }else{
 
-    $sql = "INSERT INTO `tbl_users`( `username`, `password`, `lastname`, `firstname`, `middlename`) VALUES (?,?,?,?,?)";
+    $sql = "INSERT INTO `tbl_users`( `username`, `password`, `lastname`, `firstname`, `middlename`, `user_type`) VALUES (?,?,?,?,?,?)";
     $stmt = $conn->prepare($sql);
-    $stmt -> bind_param("sssss",$users,$passs,$lnames,$fnames,$mnames);
+    $stmt -> bind_param("ssssss",$users,$passs,$lnames,$fnames,$mnames,$user_type);
     $stmt->execute();
-    echo '<script>alert ("Register Successfully!") ; window.location.href = "index.php"; </script>';
+    
+    if($user_type == 'user'){
+      echo '<script>alert ("Register Successfully!") ; window.location.href = "index.php"; </script>';
+    }elseif($user_type == 'admin'){
+      echo '<script>alert ("Register Successfully!") ; window.location.href = "admin.php"; </script>';
+    }else{
+      echo '<script>alert ("Error") ; window.location.href = "register.php"; </script>';
+    }
 
   }
 }
@@ -54,6 +62,14 @@
 
       <label for="lname">Lastname: <span class="required-indicator">
       <input type="text" name="lname" id="lname" placeholder="Lastname" required><br><br>
+
+      <select name="user_type" id="">
+        <option value="user">User</option>
+        <option value="admin">Admin</option>
+      </select>
+
+      <br><br>
+
       <input type="checkbox" onclick="myFunction()">Show Password<br><br>
 
         <button type="submit" name="submit" class="btn btn-success">REGISTER</button><br><br>
