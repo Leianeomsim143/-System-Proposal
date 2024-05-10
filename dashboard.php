@@ -93,12 +93,26 @@ $username = $_SESSION['username'];
 			echo "<td>".$row["food_desc"]."</td>";
 			echo "<td>".$row["food_calories"]."</td>";
             echo "<td>".$row["food_carbohydrates"]."</td>";
-			echo "<td><img src='data:image/jpeg;base64".base64_encode($row["food_picture"])."' width='100' height='100'></td>";
+			echo "<td><img src='data:image/jpeg;base64,".base64_encode($row["food_picture"])."' width='100' height='100'></td>";
 			echo "</tr>";
         }
     }
             echo "You're Normal. Please proceed to food library for recommended food and exercise. ";
         } elseif ($format >= 25 && $format <= 29.9) {
+            $sql = "SELECT * FROM recommend WHERE reco_id = 3";
+            $result = $conn->query($sql);
+        if($result->num_rows > 0){
+            while($row = $result -> fetch_assoc()){
+                echo "<tr>";
+                echo "<td>".$row["reco_id"]."</td>";
+                echo "<td>".$row["food_name"]."</td>";
+                echo "<td>".$row["food_desc"]."</td>";
+                echo "<td>".$row["food_calories"]."</td>";
+                echo "<td>".$row["food_carbohydrates"]."</td>";
+                echo "<td><img src='data:image/jpeg;base64,".base64_encode($row["food_picture"])."' width='100' height='100'></td>";
+                echo "</tr>";
+            }
+        }
             echo "You're Overweight. Please proceed to food library for recommended food and exercise.";
         } elseif ($format >= 30) {
             echo "You're Obese. Please proceed to food library for recommended food and exercise.";
