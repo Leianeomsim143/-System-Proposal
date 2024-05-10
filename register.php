@@ -27,7 +27,7 @@
     $stmt -> bind_param("ssssss",$users,$passs,$lnames,$fnames,$mnames,$user_type);
     $stmt->execute();
     
-    if($user_type == 'user'){
+    if($user_type == 'client'){
       echo '<script>alert ("Register Successfully!") ; window.location.href = "index.php"; </script>';
     }elseif($user_type == 'admin'){
       echo '<script>alert ("Register Successfully!") ; window.location.href = "admin.php"; </script>';
@@ -64,7 +64,7 @@
       <input type="text" name="lname" id="lname" placeholder="Lastname" required><br><br>
 
       <select name="user_type" id="">
-        <option value="user">User</option>
+        <option value="client">Client</option>
         <option value="admin">Admin</option>
       </select>
 
