@@ -8,6 +8,33 @@
     <title>Document</title>
 </head>
 <body>
+<h1>Admin Dashboard</h1>
+<table border="1" class="table table-dark">
+		<th>Bmi ID</th>
+		<th>Weight</th>
+		<th>Height</th>
+		<th>Overall BMI</th>
+		<th>Action</th>
+<?php
+	        $sql = "SELECT * FROM bmi_users";
+			$result = $conn->query($sql);
+
+			if($result->num_rows > 0){
+				while($row = $result -> fetch_assoc()){
+			echo "<tr>";
+			echo "<td>".$row["bmi_id"]."</td>";
+			echo "<td>".$row["weight"]."</td>";
+			echo "<td>".$row["height"]."</td>";
+			echo "<td>".$row["bmi"]."</td>";
+			echo "<td><a href='update.php?bmi_id=".$row["bmi_id"]."'  class='btn btn-info'>Edit</a> || <a href='deletebmi.php?bmi_id=".$row["bmi_id"]."'  class='btn btn-danger'>Delete</a></td>";
+			echo "</tr>";
+				}
+			}
+?>
+		</table>
+
+		<br><br><br>
+
 <table border="1" class="table table-dark">
 	<b>
 		<th>Food ID</th>

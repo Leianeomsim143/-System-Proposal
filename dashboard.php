@@ -24,7 +24,7 @@ $username = $_SESSION['username'];
     <form action="" method="post">
     <h1>Enter your BMI</h1>
     <label for="kilo">Weight (Kilogram): </label>
-    <input type="number" name="weight"><br><br>
+    <input type="float" name="weight"><br><br>
     <label for="cm">Height (Meter <sup>2</sup>): </label>
     <input type="float" name="height"><br><br>
     <button type="submit" name="submit">Submit</button>
@@ -45,13 +45,17 @@ $username = $_SESSION['username'];
                 $result = $stmt->get_result();
                 $row = $result->fetch_assoc();
         }
-        $sql = "INSERT INTO `bmi_users`( `weight`, `height`) VALUES (?,?)";
+        $height = $height / 100;
+        $division = $weight / ($height * $height);
+        $format = number_format ($division, 2);
+
+
+        $sql = "INSERT INTO `bmi_users`( `weight`, `height`, `bmi`) VALUES (?,?,?)";
         $stmt = $conn->prepare($sql);
-        $stmt -> bind_param("ss",$weight,$height);
+        $stmt -> bind_param("sss",$weight,$height,$format);
         $stmt->execute();
 
-          $division = $weight / $height;
-          $format = number_format ($division, 2);
+
           echo "<br>"."<br>".'Your BMI is '. $format."<br>";
 
 
