@@ -29,7 +29,7 @@
 			echo "<td>".$row["food_name"]."</td>";
 			echo "<td>".$row["food_calories"]."</td>";
 			echo "<td>".$row["food_carbohydrates"]."</td>";
-			echo "<td><img src='data:image/jpeg;base64," . base64_encode($row['food_picture']) . "' width='100' height='100'></td>";
+			echo "<td><img src='".$row["food_picture"] . "' width='100' height='100'></td>";
 			echo "<td><a href='update.php?food_id=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <button class='btn-delete'>Delete</button></td>";
 			echo "</tr>";
 		}
