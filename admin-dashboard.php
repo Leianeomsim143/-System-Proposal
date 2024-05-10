@@ -29,6 +29,8 @@
 			echo "<td><a href='update.php?bmi_id=".$row["bmi_id"]."'  class='btn btn-info'>Edit</a> || <a href='deletebmi.php?bmi_id=".$row["bmi_id"]."'  class='btn btn-danger'>Delete</a></td>";
 			echo "</tr>";
 				}
+			}else{
+				echo "<tr><td colspan = '7'> No records found</td></tr>";
 			}
 ?>
 		</table>
@@ -57,7 +59,7 @@
 			echo "<td>".$row["food_calories"]."</td>";
 			echo "<td>".$row["food_carbohydrates"]."</td>";
 			echo "<td><img src='" .$row['food_picture'] . "' width='100' height='100'></td>";
-			echo "<td><a href='update.php?food_id=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <a href='delete.php?food_id=".$row["food_id"]."'  class='btn btn-danger'>Delete</a></td>";
+			echo "<td><a href='update.php?food_id=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <a href='deleteadmin.php?food_id=".$row["food_id"]."'  class='btn btn-danger'>Delete</a></td>";
 			echo "</tr>";
 		}
 	} else{
