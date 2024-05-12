@@ -6,6 +6,7 @@ if(!isset($_SESSION['username'])){
 }
 
 $username = $_SESSION['username'];
+
     ?>
 
 <!DOCTYPE html>
@@ -28,16 +29,9 @@ $username = $_SESSION['username'];
     <input type="float" name="height"><br><br>
     <button type="submit" name="submit">Submit</button>
 <br><br><br>
-    <table border="1" class="table table-dark">
-	    <b>
-		<th>Food ID</th>
-		<th>Food Name</th>
-        <th>Food Summary</th>
-		<th>Food Calories</th>
-		<th>Food Carbohydrates</th>
-		<th>Food Picture</th>
     
     <?php
+        $showTable = false;
 
         if(isset($_POST['submit'])){
             $weight = $_POST['weight'];
@@ -63,10 +57,23 @@ $username = $_SESSION['username'];
         $stmt -> bind_param("sss",$weight,$height,$format);
         $stmt->execute();
 
+        $showTable = true;
 
           echo "<br>"."<br>".'Your BMI is '. $format."<br>";
-
-          if ($format < 18.5) {
+    ?>
+    </form>
+    <?php
+     if($showTable){
+        echo '<table border="1" class="table table-dark">';
+        echo '<b>';
+        echo '<th>Food ID</th>';
+        echo '<th>Food Name</th>';
+        echo '<th>Food Summary</th>';
+        echo '<th>Food Calories</th>';
+        echo '<th>Food Carbohydrates</th>';
+        echo '<th>Food Picture</th>';
+        
+        if ($format < 18.5) {
             $sql = "SELECT * FROM recommend WHERE reco_id = 1";
         $result = $conn->query($sql);
 	if($result->num_rows > 0){
@@ -121,8 +128,8 @@ $username = $_SESSION['username'];
         }
         echo "<br>".'<a href="foodlibrary.php">Food Library</a>';
     }
+        echo '</table>';
+    }
     ?>
-    </form>
-</table>
 </body>
 </html>

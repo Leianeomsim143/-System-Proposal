@@ -50,7 +50,7 @@
         <input type="text" name="food_carbohydrates" value="<?php echo $row['food_carbohydrates'];?>"><br><br>
         <label for="">Food Photo:</label>
         <input type="file" name="photo"><br><br>
-        <input type="submit" value="Update Student">
+        <input type="submit" value="Update Food">
     </form>
 </body>
 </html>

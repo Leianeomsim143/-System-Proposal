@@ -26,7 +26,7 @@
 			echo "<td>".$row["weight"]."</td>";
 			echo "<td>".$row["height"]."</td>";
 			echo "<td>".$row["bmi"]."</td>";
-			echo "<td><a href='update.php?bmi_id=".$row["bmi_id"]."'  class='btn btn-info'>Edit</a> || <a href='deletebmi.php?bmi_id=".$row["bmi_id"]."'  class='btn btn-danger'>Delete</a></td>";
+			echo "<td><a href='updatebmi.php?bmi_id=".$row["bmi_id"]."'  class='btn btn-info'>Edit</a> || <a href='deletebmi.php?bmi_id=".$row["bmi_id"]."'  class='btn btn-danger'>Delete</a></td>";
 			echo "</tr>";
 				}
 			}else{
