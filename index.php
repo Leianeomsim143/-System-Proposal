@@ -40,6 +40,7 @@ if ($passs != @$row['password'] && $users != @$row['username']) {
         $stmts=$conn->prepare($query);
         $stmts->execute();
         $_SESSION['username'] = @$row['username'];
+        $_SESSION['user_id'] = @$row['user_id'];
         $_SESSION["status"] = @$row["status"];
         header ("Location: Dashboard.php");
     }else{
@@ -59,6 +60,10 @@ if ($passs != @$row['password'] && $users != @$row['username']) {
 header("Location:Dashboard.php");
 exit();
 }
+
+$user_id = $_SESSION['user_id'];
+$sql = "SELECT * FROM `tbl_users` WHERE `user_id` = '$user_id'";
+$result = mysqli_query($conn, $sql);
 }
 }
 ?>

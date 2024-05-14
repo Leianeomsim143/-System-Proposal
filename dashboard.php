@@ -6,6 +6,7 @@ if(!isset($_SESSION['username'])){
 }
 
 $username = $_SESSION['username'];
+$user_id = $_SESSION['user_id'];
 
     ?>
 
@@ -52,9 +53,9 @@ $username = $_SESSION['username'];
         $format = number_format ($division, 2);
 
 
-        $sql = "INSERT INTO `bmi_users`( `weight`, `height`, `bmi`) VALUES (?,?,?)";
+        $sql = "INSERT INTO `bmi_users`( `weight`, `height`, `bmi`, `user_id`) VALUES (?,?,?,?)";
         $stmt = $conn->prepare($sql);
-        $stmt -> bind_param("sss",$weight,$height,$format);
+        $stmt -> bind_param("ssss",$weight,$height,$format,$user_id);
         $stmt->execute();
 
         $showTable = true;

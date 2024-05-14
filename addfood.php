@@ -14,17 +14,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         if(move_uploaded_file($photo_tmp, $photo_path)){
             // Use the photo name after moving the file
             $sql = "INSERT INTO food_library (food_name, food_calories, food_carbohydrates, food_picture)
-                    VALUES (?, ?, ?, ?)";
+                    VALUES ('$food_name', '$food_calories', '$food_carbohydrates', $photo_path)";
             
-            // Using prepared statement to prevent SQL injection
-            $stmt = $conn->prepare($sql);
-            $stmt->bind_param("ssss", $food_name, $food_calories, $food_carbohydrates, $photo_name);
             
-            if($stmt->execute()){
+            if($conn->query($sql)){
                 header("Location: foodlibrary.php");
                 exit();
             } else {
-                echo "Error: ". $sql. "<br>" .$stmt->error;
+                echo "Error: ". $sql. "<br>" .$conn->error;
             }
         } else {
             echo "Error uploading file";
