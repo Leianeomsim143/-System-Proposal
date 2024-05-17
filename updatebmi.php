@@ -1,4 +1,15 @@
 <?php include 'connection.php' ;?>
+<?php 
+
+if(!isset($_SESSION['status'])){
+    echo '<script>alert ("Please login first") ; window.location.href = "index.php"; </script>';
+    exit();
+}
+
+$username = $_SESSION['username'];
+$user_id = $_SESSION['user_id'];
+
+    ?>
 <?php
     if($_SERVER["REQUEST_METHOD"] == "POST"){
         $bmi_id = $_POST['bmi_id'];

@@ -72,7 +72,8 @@ $result = mysqli_query($conn, $sql);
     <label for="password">Password: </label>
     <input type="password" name="pass"><br><br>
     <button type="submit" name="submit">submit</button>
-    <a href="register.php">Register</a>
+    <p>Not have an account? <a href="register.php">Register </a></p>
+    <p>Log in as Admin? <a href="admin.php">Login as Admin  </p>
     </form>
 </body>
 </html>

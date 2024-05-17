@@ -1,4 +1,27 @@
 <?php require 'connection.php';?>
+<?php 
+
+if(!isset($_SESSION['status'])){
+    echo '<script>alert ("Please login first") ; window.location.href = "index.php"; </script>';
+    exit();
+}
+
+$username = $_SESSION['username'];
+$user_id = $_SESSION['user_id'];
+
+if(isset($_POST['logout'])){
+	if(isset($_SESSION['username'])){
+		$username=$_SESSION['username'];
+		$sql = "UPDATE `tbl_users` SET `Status` = '0' WHERE `Username` = '$username'";
+		$result = mysqli_query($conn, $sql);
+
+		header("Location:logout.php");
+		exit();
+	}
+}
+
+
+    ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,5 +90,9 @@
 	}
 ?>
 </table>
+
+<form action="" method="POST"><br>
+	<button type="submit" name="logout" value="logout" class="btn btn-danger"  onclick="return confirm('Are you sure you want to logout?')">Logout</button>
+</form>
 </body>
 </html>

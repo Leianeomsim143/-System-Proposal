@@ -1,5 +1,14 @@
+<?php require 'connection.php';
+
+if(!isset($_SESSION['status'])){
+    echo '<script>alert ("Please login first") ; window.location.href = "index.php"; </script>';
+    exit();
+}
+
+$user_id = $_SESSION['user_id'];
+
+    ?>
 <?php 
-require 'connection.php';
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $food_name = $_POST['food_name'];
@@ -13,8 +22,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(move_uploaded_file($photo_tmp, $photo_path)){
             // Use the photo name after moving the file
-            $sql = "INSERT INTO food_library (food_name, food_calories, food_carbohydrates, food_picture)
-                    VALUES ('$food_name', '$food_calories', '$food_carbohydrates', $photo_path)";
+            $sql = "INSERT INTO food_library (food_name, user_id, food_calories, food_carbohydrates, food_picture)
+                    VALUES ('$food_name', '$user_id', '$food_calories', '$food_carbohydrates', '$photo_path')";
             
             
             if($conn->query($sql)){
