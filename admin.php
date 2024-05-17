@@ -6,10 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" class="form-control text-center">
     <h1>Admin Log In</h1>
     <?php
 
@@ -66,8 +67,10 @@ exit();
     <input type="text" name="user"><br><br>
     <label for="password">Password: </label>
     <input type="password" name="pass"><br><br>
-    <button type="submit" name="submit">submit</button>
+    <button type="submit" name="submit">Submit</button>
     <a href="register.php">Register</a>
+    <br>
+    <p>Log in as Client? <a href="index.php">Login</p>
     </form>
 </body>
 </html>

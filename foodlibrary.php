@@ -16,6 +16,7 @@ $user_id = $_SESSION['user_id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
     <title>Document</title>
 </head>
 <body>
@@ -41,7 +42,7 @@ $user_id = $_SESSION['user_id'];
 			echo "<td>".$row["food_calories"]."</td>";
 			echo "<td>".$row["food_carbohydrates"]."</td>";
 			echo "<td><img src='".$row["food_picture"]."' width='100' height='100'></td>";
-			echo "<td><a href='update.php?food_id=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <button class='btn-delete'>Delete</button></td>";
+			echo "<td><a href='update.php?food_id=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <button class='btn btn-danger'>Delete</button></td>";
 			echo "</tr>";
 		}
 	} else{
@@ -51,16 +52,11 @@ $user_id = $_SESSION['user_id'];
 </table>
 <a href="addfood.php">Add Food</a>
 <script>
-    // JavaScript to handle deletion
     document.addEventListener('DOMContentLoaded', function () {
-        // Get all delete buttons
-        var deleteButtons = document.querySelectorAll('.btn-delete');
+        var deleteButtons = document.querySelectorAll('.btn-danger');
 
-        // Add click event listener to each delete button
         deleteButtons.forEach(function (button) {
             button.addEventListener('click', function () {
-                var foodId = this.getAttribute('data-food-id');
-
                 // Remove the row from the table
                 this.closest('tr').remove();
             });
@@ -68,6 +64,6 @@ $user_id = $_SESSION['user_id'];
     });
 </script>
 
-<a href="dashboard.php" class="btn btn-outline-info">Back</a>
+<a href="dashboard.php" class="btn btn-danger" >Back</a>
 </body>
 </html>

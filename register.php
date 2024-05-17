@@ -43,10 +43,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
     <title>Document</title>
 </head>
 <body>
-<form action="" method="post" class="form-group">
+<form action="" method="post" class="form-group text-center">
 <h2>SIGN UP!</h2>
       <label for="user">Username: <span class="required-indicator">
       <input type="text" name="user" id="user" placeholder="Username" required><br><br>

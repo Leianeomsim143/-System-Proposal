@@ -6,10 +6,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="" method="post">
+    <form action="" method="post" class="form-control text-center">
     <h1>Client Log In</h1>
     <?php
 
@@ -71,9 +72,32 @@ $result = mysqli_query($conn, $sql);
     <input type="text" name="user"><br><br>
     <label for="password">Password: </label>
     <input type="password" name="pass"><br><br>
-    <button type="submit" name="submit">submit</button>
+    <button type="submit" name="submit">Submit</button>
     <p>Not have an account? <a href="register.php">Register </a></p>
-    <p>Log in as Admin? <a href="admin.php">Login as Admin  </p>
+    <p>Log in as Admin? <a href="admin.php">Login</p>
     </form>
+
+    <div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="notebooks-top-each-other-with-plan-goals_185193-146970.webp" class="d-block w-100 bg-center" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="premium_photo-1682435533755-273aec988f08.jpg" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="photo-1494597564530-871f2b93ac55.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    <script src="bootstrap.js"></script>
 </body>
 </html>
