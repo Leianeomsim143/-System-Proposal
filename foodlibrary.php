@@ -67,5 +67,7 @@ $user_id = $_SESSION['user_id'];
         });
     });
 </script>
+
+<a href="dashboard.php" class="btn btn-outline-info">Back</a>
 </body>
 </html>

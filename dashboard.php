@@ -83,6 +83,7 @@ if(isset($_POST['logout'])){
         echo '<th>Food Summary</th>';
         echo '<th>Food Calories</th>';
         echo '<th>Food Carbohydrates</th>';
+        echo '<th>Exercises</th>';
         echo '<th>Food Picture</th>';
         
         if ($format < 18.5) {
@@ -96,6 +97,7 @@ if(isset($_POST['logout'])){
 			echo "<td>".$row["food_desc"]."</td>";
 			echo "<td>".$row["food_calories"]."</td>";
             echo "<td>".$row["food_carbohydrates"]."</td>";
+            echo "<td>".$row["exercise"]."</td>";
 			echo "<td><img src='data:image/jpeg;base64,".base64_encode($row["food_picture"])."' width='100' height='100'></td>";
 			echo "</tr>";
         }
@@ -134,6 +136,20 @@ if(isset($_POST['logout'])){
         }
             echo "You're Overweight. Please proceed to food library for recommended food and exercise.";
         } elseif ($format >= 30) {
+            $sql = "SELECT * FROM recommend WHERE reco_id = 4";
+            $result = $conn->query($sql);
+        if($result->num_rows > 0){
+            while($row = $result -> fetch_assoc()){
+                echo "<tr>";
+                echo "<td>".$row["reco_id"]."</td>";
+                echo "<td>".$row["food_name"]."</td>";
+                echo "<td>".$row["food_desc"]."</td>";
+                echo "<td>".$row["food_calories"]."</td>";
+                echo "<td>".$row["food_carbohydrates"]."</td>";
+                echo "<td><img src='data:image/jpeg;base64,".base64_encode($row["food_picture"])."' width='100' height='100'></td>";
+                echo "</tr>";
+            }
+        }
             echo "You're Obese. Please proceed to food library for recommended food and exercise.";
         } else {
             echo "Invalid input"; // Add this in case $format is not a valid number
