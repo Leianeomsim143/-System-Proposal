@@ -35,7 +35,7 @@ if(isset($_POST['logout'])){
     <input type="float" name="weight"><br><br>
     <label for="cm">Height (Centimeter): </label>
     <input type="float" name="height"><br><br>
-    <button type="submit" name="submit">Submit</button>
+    <button type="submit" name="submit" class="btn btn-outline-success">Submit</button>
 <br><br><br>
     
     <?php
@@ -148,14 +148,14 @@ if(isset($_POST['logout'])){
         } else {
             echo "Invalid input"; // Add this in case $format is not a valid number
         }
-        echo "<br>".'<a href="foodlibrary.php">Food Library</a>';
+        echo "<br><br>".'<a href="foodlibrary.php" class="btn btn-info">Food Library</a>'."<br><br>";
     }
         echo '</table>';
     }
     ?>
 
 <form action="" method="POST">
-	<button type="submit" name="logout" value="logout" class="btn btn-danger"  onclick="return confirm('Are you sure you want to logout?')">Logout</button>
+	<button type="submit" name="logout" value="logout" class="btn btn-danger"  onclick="return confirm('Are you sure you want to logout?')">Logout</button><br><br>
 </form>
 </body>
 </html>

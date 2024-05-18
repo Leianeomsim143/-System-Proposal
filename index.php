@@ -73,9 +73,9 @@ $result = mysqli_query($conn, $sql);
     <input type="text" name="user"><br><br>
     <label for="password">Password: </label>
     <input type="password" name="pass"><br><br>
-    <button type="submit" name="submit">Submit</button>
-    <p>Not have an account? <a href="register.php">Register </a></p>
-    <p>Log in as Admin? <a href="admin.php">Login</p>
+    <button type="submit" name="submit" class="btn btn-outline-success">Submit</button>
+    <p>Not have an account? <a href="register.php" class="btn btn-outline-info">Register </a></p>
+    <p>Log in as Admin? <a href="admin.php" class="btn btn-outline-success">Login </a></p>
     </form>
     </div>
     <div id="carouselExample" class="carousel slide">

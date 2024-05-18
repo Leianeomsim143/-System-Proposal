@@ -20,6 +20,7 @@ $user_id = $_SESSION['user_id'];
     <title>Food Library</title>
 </head>
 <body>
+<h2 style="text-align: center;">Food Library</h2>
 <table border="1" class="table table-dark">
 	<b>
 		<th>Food ID</th>
@@ -50,7 +51,7 @@ $user_id = $_SESSION['user_id'];
 	}
 ?>
 </table>
-<a href="addfood.php">Add Food</a>
+<a href="addfood.php" class="btn btn-success">Add Food</a>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var deleteButtons = document.querySelectorAll('.btn-danger');
