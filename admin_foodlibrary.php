@@ -51,6 +51,9 @@ if(isset($_POST['logout'])){
                                 Settings
                             </a>
                         </li>
+                        <form action="" method="POST"><br>
+	<button type="submit" name="logout" value="logout" class="btn btn-danger"  onclick="return confirm('Are you sure you want to logout?')">Logout</button>
+    </form>
                     </ul>
                 </div>
             </nav>
@@ -67,6 +70,7 @@ if(isset($_POST['logout'])){
 		<th>Food Name</th>
 		<th>Food Calories</th>
 		<th>Food Carbohydrates</th>
+        <th>Exercises</th>
 		<th>Food Picture</th>
 		<th>Action</th>
 
@@ -83,8 +87,9 @@ if(isset($_POST['logout'])){
 			echo "<td>".$row["food_name"]."</td>";
 			echo "<td>".$row["food_calories"]."</td>";
 			echo "<td>".$row["food_carbohydrates"]."</td>";
+            echo "<td>".$row["exercise"]."</td>";
 			echo "<td><img src='" .$row['food_picture'] . "' width='100' height='100'></td>";
-			echo "<td><a href='update.php?food_id=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <a href='deleteadmin.php?food_id=".$row["food_id"]."'  class='btn btn-danger'>Delete</a></td>";
+			echo "<td><a href='adminfoodlibrary.php?food_id=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <a href='deleteadmin.php?food_id=".$row["food_id"]."'  class='btn btn-danger'>Delete</a></td>";
 			echo "</tr>";
 		}
 	} else{
@@ -93,8 +98,6 @@ if(isset($_POST['logout'])){
 ?>
 </table>
 <br>
-<form action="" method="POST"><br>
-	<button type="submit" name="logout" value="logout" class="btn btn-danger"  onclick="return confirm('Are you sure you want to logout?')">Logout</button>
 	<script src="bootstrap.js"></script>
 
 </body>

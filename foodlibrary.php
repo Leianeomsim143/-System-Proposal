@@ -27,6 +27,7 @@ $user_id = $_SESSION['user_id'];
 		<th>Food Name</th>
 		<th>Food Calories</th>
 		<th>Food Carbohydrates</th>
+		<th>Exercises</th>
 		<th>Food Picture</th>
 		<th>Action</th>
 
@@ -42,6 +43,7 @@ $user_id = $_SESSION['user_id'];
 			echo "<td>".$row["food_name"]."</td>";
 			echo "<td>".$row["food_calories"]."</td>";
 			echo "<td>".$row["food_carbohydrates"]."</td>";
+			echo "<td>".$row["exercise"]."</td>";
 			echo "<td><img src='".$row["food_picture"]."' width='100' height='100'></td>";
 			echo "<td><a href='update.php?food_id=".$row["food_id"]."'  class='btn btn-info'>Edit</a> || <button class='btn btn-danger'>Delete</button></td>";
 			echo "</tr>";

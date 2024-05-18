@@ -7,7 +7,6 @@ if(!isset($_SESSION['status'])){
 }
 
 $username = $_SESSION['username'];
-$user_id = $_SESSION['user_id'];
 
     ?>
 <?php
@@ -39,10 +38,12 @@ $user_id = $_SESSION['user_id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.css">
     <title>Update BMI</title>
 </head>
 <body>
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="" method="POST" enctype="multipart/form-data" class="form-group text-center">
+    <h2>Update BMI</h2>
         <input type="hidden" name="bmi_id" value="<?php echo $row['bmi_id'];?>">
         <label for="">Weight:</label>
         <input type="float" name="weight" value="<?php echo $row['weight'];?>" required><br><br>
@@ -50,7 +51,8 @@ $user_id = $_SESSION['user_id'];
         <input type="float" name="height" value="<?php echo $row['height'];?>"><br><br>
         <label for="">BMI:</label>
         <input type="float" name="bmi" value="<?php echo $row['bmi'];?>"><br><br>
-        <input type="submit" value="Update BMI">
+        <input type="submit" value="Update BMI" class="btn btn-success">
     </form>
+    <a href="admin-dashboard.php" class="btn btn-danger" >Back</a>
 </body>
 </html>

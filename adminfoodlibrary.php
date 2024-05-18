@@ -7,7 +7,6 @@ if(!isset($_SESSION['status'])){
 }
 
 $username = $_SESSION['username'];
-$user_id = $_SESSION['user_id'];
 
     ?>
 <?php
@@ -31,7 +30,7 @@ $user_id = $_SESSION['user_id'];
         }
 
         $conn->query($sql);
-        header("Location: foodlibrary.php");
+        header("Location: admin_foodlibrary.php");
         exit();
     }
 
@@ -73,6 +72,6 @@ $user_id = $_SESSION['user_id'];
         <input type="file" name="photo" ><br><br>
         <input type="submit" value="Update Food" class="btn btn-success">
     </form>
-    <a href="foodlibrary.php" class="btn btn-danger" >Back</a>
+    <a href="admin_foodlibrary.php" class="btn btn-danger" >Back</a>
 </body>
 </html>
