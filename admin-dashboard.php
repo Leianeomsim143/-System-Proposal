@@ -14,7 +14,7 @@ if(isset($_POST['logout'])){
 		$sql = "UPDATE `tbl_users` SET `Status` = '0' WHERE `Username` = '$username'";
 		$result = mysqli_query($conn, $sql);
 
-		header("Location:logout.php");
+		header("Location:logoutadmin.php");
 		exit();
 	}
 }
@@ -51,10 +51,12 @@ if(isset($_POST['logout'])){
                                 Settings
                             </a>
                         </li>
+						<form action="" method="POST"><br>
+	<button type="submit" name="logout" value="logout" class="btn btn-danger"  onclick="return confirm('Are you sure you want to logout?')">Logout</button>
+</form>
                     </ul>
                 </div>
             </nav>
-
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">Admin Dashboard</h1>
@@ -89,9 +91,6 @@ if(isset($_POST['logout'])){
 		</table>
 
 		<br>
-<form action="" method="POST"><br>
-	<button type="submit" name="logout" value="logout" class="btn btn-danger"  onclick="return confirm('Are you sure you want to logout?')">Logout</button>
-	<script src="bootstrap.js"></script>
-</form>
+<script src="bootstrap.js"></script>
 </body>
 </html>
