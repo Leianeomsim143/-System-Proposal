@@ -14,6 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $food_name = $_POST['food_name'];
     $food_calories = $_POST['food_calories'];
     $food_carbohydrates = $_POST['food_carbohydrates'];
+    $exercise = $_POST['exercise'];
 
     if(isset($_FILES["photo"]) && $_FILES["photo"]["error"] == 0){
         $photo_name = $_FILES['photo']['name'];
@@ -22,8 +23,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
         if(move_uploaded_file($photo_tmp, $photo_path)){
             // Use the photo name after moving the file
-            $sql = "INSERT INTO food_library (food_name, user_id, food_calories, food_carbohydrates, food_picture)
-                    VALUES ('$food_name', '$user_id', '$food_calories', '$food_carbohydrates', '$photo_path')";
+            $sql = "INSERT INTO food_library (food_name, user_id, food_calories, food_carbohydrates, exercise, food_picture)
+                    VALUES ('$food_name', '$user_id', '$food_calories', '$food_carbohydrates', '$exercise', '$photo_path')";
             
             
             if($conn->query($sql)){
@@ -59,6 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             <input type="text" name="food_calories" required><br><br>
             <label for="">Food Carbohydrates: </label>
             <input type="text" name="food_carbohydrates" required><br><br>
+            <label for="">Exercise: </label>
+            <input type="text" name="exercise" required><br><br>
             <input type="file" name="photo" required><br><br>
             <input type="submit" value="Add Food">
         </form>

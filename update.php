@@ -57,16 +57,15 @@ $user_id = $_SESSION['user_id'];
     <h2>Update FoodLibrary</h2>
         <input type="hidden" name="food_id" value="<?php echo $row['food_id'];?>">
         <label for="">Food Name:</label>
-
         <input type="text" name="food_name" value="<?php echo $row['food_name'];?>" required><br><br>
+
         <label for="">Food Calories:</label>
-
         <input type="text" name="food_calories" value="<?php echo $row['food_calories'];?>"><br><br>
+
         <label for="">Exercises:</label>
-
         <input type="text" name="exercise" value="<?php echo $row['exercise'];?>"><br><br>
-        <label for="">Food Carbohydrates:</label>
 
+        <label for="">Food Carbohydrates:</label>
         <input type="text" name="food_carbohydrates" value="<?php echo $row['food_carbohydrates'];?>"><br><br>
 
         <label for="">Food Photo:</label>
